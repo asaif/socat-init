@@ -82,8 +82,18 @@ case "$1" in
 		    log_end_msg $?
 	    fi
 	    ;;
+    status)
+	    PID='/var/run/socat.pid'
+	    if [ -f "$PID" ]; then
+		    echo "socat is running (PID=`cat $PID`)."
+		    exit 0
+	    else
+		    echo "socat is NOT running."
+		    exit 1
+	    fi
+	    ;;
     *)
-        echo "Usage: /etc/init.d/$NAME {start|stop|restart|reload|force-reload}"
+        echo "Usage: /etc/init.d/$NAME {start|stop|restart|reload|force-reload|status}"
         exit 3
         ;;
 esac
