@@ -35,25 +35,21 @@ stop_socat() {
 }
 
 start () {
-        echo "Starting $NAME:"
-                start_socat
+        start_socat
         return $?
 }
 
 stop () {
-        echo -n "Stopping $NAME:"
-
         for PIDFILE in `ls /var/run/socat.pid 2> /dev/null`; do
                 NAME=`echo $PIDFILE | cut -c16-`
                 NAME=${NAME%%.pid}
                 stop_socat
-                echo -n " $NAME"
         done
 }
 
 case "$1" in
     start)
-        log_daemon_msg "Starting socat" "socat"
+        log_daemon_msg "Starting multipurpose relay" "socat" 
         if start ; then
                 log_end_msg $?
         else
@@ -61,7 +57,7 @@ case "$1" in
         fi
         ;;
     stop)
-        log_daemon_msg "Stopping socat" "socat"
+        log_daemon_msg "Stopping multipurpose relay" "socat"
         if stop ; then
                 log_end_msg $?
         else
@@ -69,7 +65,7 @@ case "$1" in
         fi
         ;;
     restart)
-        log_daemon_msg "Restarting socat" "socat"
+        log_daemon_msg "Restarting multipurpose relay" "socat"
         stop
         if start ; then
                 log_end_msg $?
