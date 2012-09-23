@@ -23,14 +23,14 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin
 [ -x $DAEMON ] || exit 0
 
 start_socat() {
-        start-stop-daemon --quiet --start \
+        start-stop-daemon --oknodo --quiet --start \
                 --pidfile /var/run/socat.pid \
                 --background --make-pidfile \
                 --exec $DAEMON -- $SOCAT_DEFAULTS $OPTIONS < /dev/null
 }
 
 stop_socat() {
-        start-stop-daemon --stop --quiet --pidfile /var/run/socat.pid --exec $DAEMON
+        start-stop-daemon --oknodo --stop --quiet --pidfile /var/run/socat.pid --exec $DAEMON
         rm -f /var/run/socat.pid
 }
 
