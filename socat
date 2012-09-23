@@ -49,32 +49,41 @@ stop () {
 
 case "$1" in
     start)
-        log_daemon_msg "Starting multipurpose relay" "socat" 
-        if start ; then
-                log_end_msg $?
-        else
-                log_end_msg $?
-        fi
-        ;;
+	    log_daemon_msg "Starting multipurpose relay" "socat" 
+	    if start ; then
+		    log_end_msg $?
+	    else
+		    log_end_msg $?
+	    fi
+	    ;;
     stop)
-        log_daemon_msg "Stopping multipurpose relay" "socat"
-        if stop ; then
-                log_end_msg $?
-        else
-                log_end_msg $?
-        fi
-        ;;
+	    log_daemon_msg "Stopping multipurpose relay" "socat"
+            if stop ; then
+                   log_end_msg $?
+	   else
+		   log_end_msg $?
+	   fi
+	   ;;
     restart)
-        log_daemon_msg "Restarting multipurpose relay" "socat"
-        stop
-        if start ; then
-                log_end_msg $?
-        else
-                log_end_msg $?
-        fi
-        ;;
+	    log_daemon_msg "Restarting multipurpose relay" "socat"
+            stop
+            if start ; then
+		    log_end_msg $?
+	    else
+		    log_end_msg $?
+	    fi
+	    ;;
+    reload|force-reload)
+	    log_daemon_msg "Reloading multipurpose relay" "socat"
+	    stop
+	    if start ; then
+		    log_end_msg $?
+	    else
+		    log_end_msg $?
+	    fi
+	    ;;
     *)
-        echo "Usage: /etc/init.d/$NAME {start|stop|restart}"
+        echo "Usage: /etc/init.d/$NAME {start|stop|restart|reload|force-reload}"
         exit 3
         ;;
 esac
