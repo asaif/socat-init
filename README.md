@@ -10,7 +10,7 @@ INSTALLATION
   
   1. Clone socat-init to your home directory
 
-       $: git clone https://asaif@github.com/asaif/socat-init.git /home/$user
+       $: git clone https://github.com/asaif/socat-init.git /home/$user
 
   2. Copy the files to the right path
 
