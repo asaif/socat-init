@@ -15,7 +15,7 @@ INSTALLATION
   2. Copy the files to the right path
 
         sudo cp -a /home/$user/socat-init/socat /etc/init.d/
-        sudo cp -a /home/$user/socat-init/defaults/socat.conf /etc/defaults/
+        sudo cp -a /home/$user/socat-init/defaults/socat.conf /etc/default/
 
 Now socat-init has been installed and is ready to be used.
 
